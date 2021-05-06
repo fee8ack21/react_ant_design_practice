@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, Menu, Breadcrumb } from "antd";
+import { Layout, Menu, Breadcrumb, Space, Spin } from "antd";
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -7,13 +7,17 @@ import {
   AreaChartOutlined,
   BarcodeOutlined,
 } from "@ant-design/icons";
-import "./App.css";
 const { SubMenu } = Menu;
 const { Header, Sider, Content } = Layout;
+//
 class LayoutCustom extends React.Component {
-  state = {
-    collapsed: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      collapsed: false,
+      loading: this.props.loading || false,
+    };
+  }
 
   toggle = () => {
     this.setState({
@@ -78,15 +82,6 @@ class LayoutCustom extends React.Component {
               minHeight: "calc(100vh - 112px)",
             }}
           >
-            <Breadcrumb style={{ marginBottom: "16px" }}>
-              <Breadcrumb.Item>
-                <a href="#!">Home</a>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>
-                <a href="#!">Application Center</a>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>An Application</Breadcrumb.Item>
-            </Breadcrumb>{" "}
             <div>{this.props.children}</div>
           </Content>
         </Layout>
